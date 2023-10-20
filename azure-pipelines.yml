@@ -10,13 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - 
 - task: TerraformInstaller@1
   inputs:
     terraformVersion: 'latest'
 
-  - task: TerraformTaskV4@4
-    inputs:
+- task: TerraformTaskV4@4
+  inputs:
       provider: 'azurerm'
       command: 'init'
       backendServiceArm: 'vnet_sc'
@@ -25,15 +24,15 @@ steps:
       backendAzureRmContainerName: 'tfstate'
       backendAzureRmKey: 'terraform2.tfstate'
 
-  - task: TerraformTaskV4@4
-    inputs:
+- task: TerraformTaskV4@4
+  inputs:
       provider: 'azurerm'
       command: 'plan'
       environmentServiceNameAzureRM: 'vnet_sc'
 
 
-  - task: TerraformTaskV4@4
-    inputs:
+- task: TerraformTaskV4@4
+  inputs:
       provider: 'azurerm'
       command: 'apply'
       environmentServiceNameAzureRM: 'vnet_sc'
